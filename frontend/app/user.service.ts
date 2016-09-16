@@ -19,7 +19,7 @@ export class UserService {
       .catch(this.handleError);
   }
   private handleError(error: any): Promise<any> {
-    console.erorr('Error!', error);
+    console.error('Error!', error);
     return Promise.reject(error.message || error);
   }
 }
