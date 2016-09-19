@@ -13,7 +13,7 @@ export class UserService {
 
   signUp(email: string, password: string): Promise<User> {
     return this.http
-      .post(this.userUrl, JSON.stringify({"email": email, "password": password}), {headers: this.headers})
+      .post(this.userUrl, JSON.stringify({"user": {"email": email, "password": password}}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().dat)
       .catch(this.handleError);

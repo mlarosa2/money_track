@@ -19,7 +19,7 @@ var UserService = (function () {
     }
     UserService.prototype.signUp = function (email, password) {
         return this.http
-            .post(this.userUrl, JSON.stringify({ "email": email, "password": password }), { headers: this.headers })
+            .post(this.userUrl, JSON.stringify({ "user": { "email": email, "password": password } }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().dat; })
             .catch(this.handleError);
