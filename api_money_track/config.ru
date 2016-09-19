@@ -2,7 +2,7 @@
 
 require_relative 'config/environment'
 
-user Rack::Cors do
+use Rack::Cors do
   allow do
     origins 'localhost:3000', 'localhost:8000'
     resource '/file/list_all', :headers => 'x-domain-token'
