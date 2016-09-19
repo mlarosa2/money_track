@@ -16,6 +16,7 @@ var forms_1 = require('@angular/forms');
 var http_1 = require('@angular/http');
 // components
 var app_component_1 = require('./app.component');
+var signup_component_1 = require('./signup.component');
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
@@ -29,7 +30,8 @@ var AppModule = (function () {
                 app_routing_1.routing
             ],
             declarations: [
-                app_component_1.AppComponent
+                app_component_1.AppComponent,
+                signup_component_1.SignupComponent
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]

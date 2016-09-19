@@ -10,7 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
-var user_uservice_1 = require('./user.uservice');
+var user_service_1 = require('./user.service');
 var SignupComponent = (function () {
     function SignupComponent(userService, router) {
         this.userService = userService;
@@ -25,12 +25,11 @@ var SignupComponent = (function () {
         core_1.Component({
             selector: 'sign-up',
             templateUrl: 'app/signup.component.html',
-            providers: [user_uservice_1.UserService]
+            providers: [user_service_1.UserService]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof user_uservice_1.UserService !== 'undefined' && user_uservice_1.UserService) === 'function' && _a) || Object, router_1.Router])
+        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
     ], SignupComponent);
     return SignupComponent;
-    var _a;
 }());
 exports.SignupComponent = SignupComponent;
 //# sourceMappingURL=signup.component.js.map
