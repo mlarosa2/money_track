@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers, Response } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -13,6 +13,10 @@ export class LoginService {
     return this.http
       .post(this.loginUrl, JSON.stringify({"user": {"email": email, "password": password}}), {headers: this.headers})
       .toPromise()
-      .then(res => console.log(res));
+      .then(res => {
+        let myBody = res.json().user;
+        localStorage.setItem('currentUserMT', JSON.stringify(myBody));
+      });
+
   }
 }

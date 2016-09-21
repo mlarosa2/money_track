@@ -21,7 +21,10 @@ var LoginService = (function () {
         return this.http
             .post(this.loginUrl, JSON.stringify({ "user": { "email": email, "password": password } }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return console.log(res); });
+            .then(function (res) {
+            var myBody = res.json().user;
+            localStorage.setItem('currentUserMT', JSON.stringify(myBody));
+        });
     };
     LoginService = __decorate([
         core_1.Injectable(), 
