@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160914220907) do
+ActiveRecord::Schema.define(version: 20160921185752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "transactions", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.string   "type",       null: false
+    t.date     "committed",  null: false
+    t.float    "amount",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["name"], name: "index_transactions_on_name", using: :btree
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -25,4 +36,5 @@ ActiveRecord::Schema.define(version: 20160914220907) do
     t.index ["session_token"], name: "index_users_on_session_token", using: :btree
   end
 
+  add_foreign_key "transactions", "users"
 end
