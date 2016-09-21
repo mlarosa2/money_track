@@ -17,6 +17,7 @@ var http_1 = require('@angular/http');
 // components
 var app_component_1 = require('./app.component');
 var signup_component_1 = require('./signup.component');
+var login_component_1 = require('./login.component');
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
@@ -31,7 +32,8 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                signup_component_1.SignupComponent
+                signup_component_1.SignupComponent,
+                login_component_1.LoginComponent
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
