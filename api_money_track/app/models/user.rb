@@ -5,6 +5,13 @@ class User < ApplicationRecord
   after_initialize :generate_session_token
   attr_reader :password
 
+  has_many(
+    :transactions,
+    class_name: "Transaction",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
+
   def self.create_session_token
     SecureRandom::urlsafe_base64
   end
