@@ -17,5 +17,6 @@ export class SignupComponent {
     email = email.trim();
     password = password.trim();
     this.userService.signUp(email, password);
+    this.router.navigate = '/login';
   }
 }
