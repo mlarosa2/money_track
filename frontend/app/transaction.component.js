@@ -19,7 +19,9 @@ var TransactionComponent = (function () {
     }
     TransactionComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.transactionService.getTransactions().then(function (trans) { return _this.transactions = trans; });
+        var current = new Date();
+        var month = (current.getMonth() + 1).toString();
+        this.transactionService.getTransactions(month).then(function (trans) { return _this.transactions = trans; });
     };
     TransactionComponent = __decorate([
         core_1.Component({

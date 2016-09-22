@@ -16,6 +16,8 @@ export class TransactionComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit(): void {
-    this.transactionService.getTransactions().then( trans => this.transactions = trans);
+    let current = new Date();
+    let month: string = (current.getMonth() + 1).toString();
+    this.transactionService.getTransactions(month).then( trans => this.transactions = trans);
   }
 }
