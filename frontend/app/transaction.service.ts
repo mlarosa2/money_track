@@ -22,8 +22,6 @@ export class TransactionService {
   }
 
   getTransactions(month: string): Promise<Transaction[]> {
-    let current = new Date();
-    month = month || (current.getMonth() + 1).toString();
     let transactionUrlParams: string = this.transactionUrl;
     transactionUrlParams += `?session_token=${this.sessionToken}&month=${month}`;
     return this.http.get(transactionUrlParams)

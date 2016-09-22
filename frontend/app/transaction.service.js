@@ -26,8 +26,6 @@ var TransactionService = (function () {
             .catch(this.handleError);
     };
     TransactionService.prototype.getTransactions = function (month) {
-        var current = new Date();
-        month = month || (current.getMonth() + 1).toString();
         var transactionUrlParams = this.transactionUrl;
         transactionUrlParams += "?session_token=" + this.sessionToken + "&month=" + month;
         return this.http.get(transactionUrlParams)
