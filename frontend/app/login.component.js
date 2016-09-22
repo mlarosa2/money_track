@@ -20,6 +20,7 @@ var LoginComponent = (function () {
         email = email.trim();
         password = password.trim();
         this.loginService.login(email, password);
+        this.router.navigate('my-transactions');
     };
     LoginComponent = __decorate([
         core_1.Component({
