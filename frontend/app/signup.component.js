@@ -20,7 +20,7 @@ var SignupComponent = (function () {
         email = email.trim();
         password = password.trim();
         this.userService.signUp(email, password);
-        this.router.navigate = '/login';
+        this.router.navigate(['/login']);
     };
     SignupComponent = __decorate([
         core_1.Component({
