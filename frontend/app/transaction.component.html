@@ -1,0 +1,7 @@
+<h1>My transactions</h1>
+<h2>Add a new transaction</h2>
+<new-transaction></new-transaction>
+
+<div *ngFor="let transaction of transactions">
+  {{transaction.name}} | {{transaction.amount}} | {{transaction.type}} | {{transaction.committed}}
+</div>
