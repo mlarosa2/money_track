@@ -10,7 +10,7 @@ import { TransactionService } from './transaction.service';
 })
 
 export class NewTransaction {
-  constructor(private transactionService: TransactionService
+  constructor(private transactionService: TransactionService,
               private router: Router) {}
 
   create(type: string, committed: string, amount: number, name: string): void {
