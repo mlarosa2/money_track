@@ -1,7 +1,7 @@
 class TransactionsController < ApplicationController
   def index
     user_id = User.find_by(session_token: params[:transaction][:session_token]).id
-    @transactions = Transaction.where(user_id: user_id)
+    @transactions = Transaction.get_by_month(user_id, params[:transaction][:month])
     render @transactions
   end
 
