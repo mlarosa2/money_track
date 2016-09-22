@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup.component';
 import { LoginComponent } from './login.component';
-
+import { TransactionComponent } from './transaction.component';
 
 const appRoutes: Routes = [
   {
@@ -17,6 +17,10 @@ const appRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'my-transactions',
+    component: TransactionComponent
   }
 ];
 
