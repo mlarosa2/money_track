@@ -23,8 +23,13 @@ var LoginService = (function () {
             .toPromise()
             .then(function (res) {
             var myBody = res.json().user;
-            localStorage.setItem('currentUserMT', JSON.stringify(myBody));
-        });
+            localStorage.setItem('currentUser', JSON.stringify(myBody));
+        })
+            .catch(this.handleError);
+    };
+    LoginService.prototype.handleError = function (error) {
+        console.error('Error!', error);
+        return Promise.reject(error.message || error);
     };
     LoginService = __decorate([
         core_1.Injectable(), 
