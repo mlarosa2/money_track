@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var user_service_1 = require('./user.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var user_service_1 = require("../user/user.service");
 var SignupComponent = (function () {
     function SignupComponent(userService, router) {
         this.userService = userService;
@@ -22,15 +22,16 @@ var SignupComponent = (function () {
         this.userService.signUp(email, password);
         this.router.navigate(['/login']);
     };
-    SignupComponent = __decorate([
-        core_1.Component({
-            selector: 'sign-up',
-            templateUrl: 'app/signup.component.html',
-            providers: [user_service_1.UserService]
-        }), 
-        __metadata('design:paramtypes', [user_service_1.UserService, router_1.Router])
-    ], SignupComponent);
     return SignupComponent;
 }());
+SignupComponent = __decorate([
+    core_1.Component({
+        selector: 'sign-up',
+        templateUrl: 'app/signup/signup.component.html',
+        providers: [user_service_1.UserService]
+    }),
+    __metadata("design:paramtypes", [user_service_1.UserService,
+        router_1.Router])
+], SignupComponent);
 exports.SignupComponent = SignupComponent;
 //# sourceMappingURL=signup.component.js.map

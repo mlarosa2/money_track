@@ -8,9 +8,9 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var transaction_service_1 = require('./transaction.service');
+var core_1 = require("@angular/core");
+var router_1 = require("@angular/router");
+var transaction_service_1 = require("../transaction/transaction.service");
 var TransactionComponent = (function () {
     function TransactionComponent(transactionService, router) {
         this.transactionService = transactionService;
@@ -23,15 +23,16 @@ var TransactionComponent = (function () {
         var month = (current.getMonth() + 1).toString();
         this.transactionService.getTransactions(month).then(function (trans) { return _this.transactions = trans; });
     };
-    TransactionComponent = __decorate([
-        core_1.Component({
-            selector: 'transactions',
-            templateUrl: 'app/transaction.component.html',
-            providers: [transaction_service_1.TransactionService]
-        }), 
-        __metadata('design:paramtypes', [transaction_service_1.TransactionService, router_1.Router])
-    ], TransactionComponent);
     return TransactionComponent;
 }());
+TransactionComponent = __decorate([
+    core_1.Component({
+        selector: 'transactions',
+        templateUrl: 'app/transaction/transaction.component.html',
+        providers: [transaction_service_1.TransactionService]
+    }),
+    __metadata("design:paramtypes", [transaction_service_1.TransactionService,
+        router_1.Router])
+], TransactionComponent);
 exports.TransactionComponent = TransactionComponent;
 //# sourceMappingURL=transaction.component.js.map

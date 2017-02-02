@@ -8,8 +8,8 @@ import { HttpModule }     from '@angular/http';
 
 // components
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup.component';
-import { LoginComponent } from './login.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
 
 import { routing } from './app.routing';
 

@@ -1,9 +1,9 @@
 "use strict";
-var router_1 = require('@angular/router');
-var app_component_1 = require('./app.component');
-var signup_component_1 = require('./signup.component');
-var login_component_1 = require('./login.component');
-var transaction_component_1 = require('./transaction.component');
+var router_1 = require("@angular/router");
+var app_component_1 = require("./app.component");
+var signup_component_1 = require("./signup/signup.component");
+var login_component_1 = require("./login/login.component");
+var transaction_component_1 = require("./transaction/transaction.component");
 var appRoutes = [
     {
         path: '',

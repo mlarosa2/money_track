@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TransactionService } from './transaction.service';
-import { Transaction } from './transaction'
+import { TransactionService } from '../transaction/transaction.service';
+import { Transaction } from '../transaction/transaction'
 
 @Component({
   selector: 'transactions',
-  templateUrl: 'app/transaction.component.html',
+  templateUrl: 'app/transaction/transaction.component.html',
   providers: [TransactionService]
 })
 

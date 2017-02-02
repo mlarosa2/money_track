@@ -1,9 +1,9 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
-import { SignupComponent } from './signup.component';
-import { LoginComponent } from './login.component';
-import { TransactionComponent } from './transaction.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+import { TransactionComponent } from './transaction/transaction.component';
 
 const appRoutes: Routes = [
   {
