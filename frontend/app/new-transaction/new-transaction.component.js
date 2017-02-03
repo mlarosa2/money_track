@@ -8,28 +8,27 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require("@angular/core");
-var router_1 = require("@angular/router");
-var transaction_service_1 = require("../transaction/transaction.service");
-var NewTransaction = (function () {
-    function NewTransaction(transactionService, router) {
+var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var transaction_service_1 = require('../transaction/transaction.service');
+var NewTransactionComponent = (function () {
+    function NewTransactionComponent(transactionService, router) {
         this.transactionService = transactionService;
         this.router = router;
     }
-    NewTransaction.prototype.create = function (type, committed, amount, name) {
+    NewTransactionComponent.prototype.create = function (type, committed, amount, name) {
         name = name.trim();
         this.transactionService.create(type, committed, amount, name);
     };
-    return NewTransaction;
+    NewTransactionComponent = __decorate([
+        core_1.Component({
+            selector: 'new-transaction',
+            templateUrl: 'app/new-transaction/new-transaction.component.html',
+            providers: [transaction_service_1.TransactionService]
+        }), 
+        __metadata('design:paramtypes', [transaction_service_1.TransactionService, router_1.Router])
+    ], NewTransactionComponent);
+    return NewTransactionComponent;
 }());
-NewTransaction = __decorate([
-    core_1.Component({
-        selector: 'new-transaction',
-        templateUrl: 'app/new-transaction/new-transaction.component.html',
-        providers: [transaction_service_1.TransactionService]
-    }),
-    __metadata("design:paramtypes", [transaction_service_1.TransactionService,
-        router_1.Router])
-], NewTransaction);
-exports.NewTransaction = NewTransaction;
+exports.NewTransactionComponent = NewTransactionComponent;
 //# sourceMappingURL=new-transaction.component.js.map

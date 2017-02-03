@@ -9,7 +9,7 @@ import { TransactionService } from '../transaction/transaction.service';
   providers: [TransactionService]
 })
 
-export class NewTransaction {
+export class NewTransactionComponent {
   constructor(private transactionService: TransactionService,
               private router: Router) {}
 
