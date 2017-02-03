@@ -9,7 +9,7 @@ import { Transaction } from './transaction';
 export class TransactionService {
   private transactionUrl: string = 'http://localhost:3000/api/transactions';
   private headers = new Headers({'Content-Type': 'application/json'});
-  private sessionToken: string = JSON.parse(localStorage.getItem('currentUser')).session_token;
+  private sessionToken: string = JSON.parse(window.localStorage.getItem('currentUser')).session_token;
 
   constructor(private http: Http) {}
 

@@ -16,7 +16,7 @@ var TransactionService = (function () {
         this.http = http;
         this.transactionUrl = 'http://localhost:3000/api/transactions';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.sessionToken = JSON.parse(localStorage.getItem('currentUser')).session_token;
+        this.sessionToken = JSON.parse(window.localStorage.getItem('currentUser')).session_token;
     }
     TransactionService.prototype.create = function (type, committed, amount, name) {
         return this.http
