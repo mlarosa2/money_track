@@ -20,6 +20,7 @@ var signup_component_1 = require('./signup/signup.component');
 var login_component_1 = require('./login/login.component');
 var transaction_component_1 = require('./transaction/transaction.component');
 var new_transaction_component_1 = require('./new-transaction/new-transaction.component');
+var home_component_1 = require('./home/home.component');
 var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
@@ -37,7 +38,8 @@ var AppModule = (function () {
                 signup_component_1.SignupComponent,
                 login_component_1.LoginComponent,
                 transaction_component_1.TransactionComponent,
-                new_transaction_component_1.NewTransactionComponent
+                new_transaction_component_1.NewTransactionComponent,
+                home_component_1.HomeComponent
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
