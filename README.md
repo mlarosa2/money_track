@@ -1,6 +1,7 @@
 # Money Track
 
-A budgeting app powered by Rails 5 and Angular 2.
+A budgeting app to teach your children the value of a dollar! 
+Powered by Rails 5 and Angular 2.
 
 ## How to run
 
