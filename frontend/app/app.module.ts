@@ -1,4 +1,4 @@
-import './rxjs-extensions';
+import './rxjs-extensions/rxjs-extensions';
 
 // angular modules
 import { NgModule }       from '@angular/core';
@@ -10,6 +10,8 @@ import { HttpModule }     from '@angular/http';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { TransactionComponent } from './transaction/transaction.component';
+import { NewTransactionComponent } from './new-transaction/new-transaction.component';
 
 import { routing } from './app.routing';
 
@@ -23,7 +25,9 @@ import { routing } from './app.routing';
   declarations: [
     AppComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    TransactionComponent,
+    NewTransactionComponent
   ],
   providers: [
     //services here

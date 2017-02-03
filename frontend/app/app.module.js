@@ -5,38 +5,46 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-require("./rxjs-extensions");
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+require('./rxjs-extensions/rxjs-extensions');
 // angular modules
-var core_1 = require("@angular/core");
-var platform_browser_1 = require("@angular/platform-browser");
-var forms_1 = require("@angular/forms");
-var http_1 = require("@angular/http");
+var core_1 = require('@angular/core');
+var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
 // components
-var app_component_1 = require("./app.component");
-var signup_component_1 = require("./signup/signup.component");
-var login_component_1 = require("./login/login.component");
-var app_routing_1 = require("./app.routing");
+var app_component_1 = require('./app.component');
+var signup_component_1 = require('./signup/signup.component');
+var login_component_1 = require('./login/login.component');
+var transaction_component_1 = require('./transaction/transaction.component');
+var new_transaction_component_1 = require('./new-transaction/new-transaction.component');
+var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule = __decorate([
+        core_1.NgModule({
+            imports: [
+                platform_browser_1.BrowserModule,
+                forms_1.FormsModule,
+                http_1.HttpModule,
+                app_routing_1.routing
+            ],
+            declarations: [
+                app_component_1.AppComponent,
+                signup_component_1.SignupComponent,
+                login_component_1.LoginComponent,
+                transaction_component_1.TransactionComponent,
+                new_transaction_component_1.NewTransactionComponent
+            ],
+            providers: [],
+            bootstrap: [app_component_1.AppComponent]
+        }), 
+        __metadata('design:paramtypes', [])
+    ], AppModule);
     return AppModule;
 }());
-AppModule = __decorate([
-    core_1.NgModule({
-        imports: [
-            platform_browser_1.BrowserModule,
-            forms_1.FormsModule,
-            http_1.HttpModule,
-            app_routing_1.routing
-        ],
-        declarations: [
-            app_component_1.AppComponent,
-            signup_component_1.SignupComponent,
-            login_component_1.LoginComponent
-        ],
-        providers: [],
-        bootstrap: [app_component_1.AppComponent]
-    })
-], AppModule);
 exports.AppModule = AppModule;
 //# sourceMappingURL=app.module.js.map
