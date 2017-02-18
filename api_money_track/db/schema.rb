@@ -10,19 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170218154916) do
+ActiveRecord::Schema.define(version: 20170218163111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "transactions", force: :cascade do |t|
     t.string   "name",       null: false
-    t.string   "type",       null: false
     t.float    "amount",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "month",      null: false
+    t.integer  "kind",       null: false
     t.index ["name"], name: "index_transactions_on_name", using: :btree
   end
 

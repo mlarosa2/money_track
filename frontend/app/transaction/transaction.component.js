@@ -20,7 +20,7 @@ var TransactionComponent = (function () {
     TransactionComponent.prototype.ngOnInit = function () {
         var _this = this;
         var current = new Date();
-        var month = (current.getMonth() + 1).toString();
+        var month = (current.getMonth()).toString();
         this.transactionService.getTransactions(month).then(function (trans) { return _this.transactions = trans; });
     };
     TransactionComponent = __decorate([

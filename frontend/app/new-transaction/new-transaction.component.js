@@ -17,7 +17,6 @@ var NewTransactionComponent = (function () {
         this.router = router;
     }
     NewTransactionComponent.prototype.create = function (type, amount, name) {
-        debugger;
         name = name.trim();
         this.transactionService.create(type, amount, name);
     };

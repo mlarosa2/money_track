@@ -18,11 +18,11 @@ var TransactionService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.sessionToken = JSON.parse(window.localStorage.getItem('currentUser')).session_token;
     }
-    TransactionService.prototype.create = function (type, committed, amount, name) {
+    TransactionService.prototype.create = function (kind, committed, amount, name) {
         return this.http
             .post(this.transactionUrl, JSON.stringify({
             "transaction": {
-                "type": type,
+                "kind": kind,
                 "amount": amount,
                 "name": name,
                 "session_token": this.sessionToken,
@@ -38,7 +38,7 @@ var TransactionService = (function () {
         transactionUrlParams += "?session_token=" + this.sessionToken + "&month=" + month;
         return this.http.get(transactionUrlParams)
             .toPromise()
-            .then(function (response) { return response.json().data; })
+            .then(function (response) { return console.log(response); })
             .catch(this.handleError);
     };
     TransactionService.prototype.handleError = function (error) {

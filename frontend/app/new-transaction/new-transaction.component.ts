@@ -14,7 +14,6 @@ export class NewTransactionComponent {
               private router: Router) {}
 
   create(type: string, amount: number, name: string): void {
-    debugger
     name = name.trim();
     this.transactionService.create(type, amount, name);
   }

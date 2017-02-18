@@ -8,7 +8,7 @@ class Api::TransactionsController < ApplicationController
 
   def create
     user_id = User.find_by(session_token: params[:transaction][:session_token]).id
-    @transaction = Transaction.new(transaction_params, user_id)
+    @transaction = Transaction.new(params[:name], params[:kind], params[:amount], user_id, params[:month])
     if @transaction.save
       render @transaction
     else
@@ -19,6 +19,6 @@ class Api::TransactionsController < ApplicationController
 
   private
   def transaction_params
-    params.require(:transaction).permit(:name, :type, :amount, :session_token, :month)
+    params.require(:transaction).permit(:name, :kind, :amount, :session_token, :month)
   end
 end

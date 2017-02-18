@@ -13,11 +13,11 @@ export class TransactionService {
 
   constructor(private http: Http) {}
 
-  create(type: string, committed: string, amount: number, name: string): Promise<Transaction> {
+  create(kind: string, committed: string, amount: number, name: string): Promise<Transaction> {
     return this.http
       .post(this.transactionUrl, JSON.stringify({
         "transaction": {
-          "type": type, 
+          "kind": kind, 
           "amount": amount, 
           "name": name, 
           "session_token": this.sessionToken,
@@ -34,7 +34,7 @@ export class TransactionService {
     transactionUrlParams += `?session_token=${this.sessionToken}&month=${month}`;
     return this.http.get(transactionUrlParams)
       .toPromise()
-      .then(response => response.json().data as Transaction[])
+      .then(response => console.log(response))
       .catch(this.handleError)
   }
   private handleError(error: any): Promise<any> {
