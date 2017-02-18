@@ -1,4 +1,4 @@
-class TransactionsController < ApplicationController
+class Api::TransactionsController < ApplicationController
   def index
     params.permit(:session_token, :month)
     user_id = User.find_by(session_token: params[:session_token]).id
