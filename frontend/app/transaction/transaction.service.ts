@@ -15,7 +15,15 @@ export class TransactionService {
 
   create(type: string, committed: string, amount: number, name: string): Promise<Transaction> {
     return this.http
-      .post(this.transactionUrl, JSON.stringify({"transaction": {"type": type, "committed": committed, "amount": amount, "name": name, "session_token": this.sessionToken}}), {headers: this.headers})
+      .post(this.transactionUrl, JSON.stringify({
+        "transaction": {
+          "type": type, 
+          "amount": amount, 
+          "name": name, 
+          "session_token": this.sessionToken,
+          "month": new Date().getMonth()
+        }
+      }), {headers: this.headers})
       .toPromise()
       .then( res => res.json().dat)
       .catch(this.handleError);

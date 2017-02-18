@@ -20,7 +20,15 @@ var TransactionService = (function () {
     }
     TransactionService.prototype.create = function (type, committed, amount, name) {
         return this.http
-            .post(this.transactionUrl, JSON.stringify({ "transaction": { "type": type, "committed": committed, "amount": amount, "name": name, "session_token": this.sessionToken } }), { headers: this.headers })
+            .post(this.transactionUrl, JSON.stringify({
+            "transaction": {
+                "type": type,
+                "amount": amount,
+                "name": name,
+                "session_token": this.sessionToken,
+                "month": new Date().getMonth()
+            }
+        }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().dat; })
             .catch(this.handleError);

@@ -13,8 +13,9 @@ export class NewTransactionComponent {
   constructor(private transactionService: TransactionService,
               private router: Router) {}
 
-  create(type: string, committed: string, amount: number, name: string): void {
+  create(type: string, amount: number, name: string): void {
+    debugger
     name = name.trim();
-    this.transactionService.create(type, committed, amount, name);
+    this.transactionService.create(type, amount, name);
   }
 }
