@@ -21,7 +21,12 @@ var TransactionComponent = (function () {
         var _this = this;
         var current = new Date();
         var month = (current.getMonth()).toString();
-        this.transactionService.getTransactions(month).then(function (trans) { return _this.transactions = trans; });
+        this.transactionService.getTransactions(month).then(function (trans) {
+            for (var t in trans) {
+                if (t)
+                    _this.transactions.push(trans[t]);
+            }
+        });
     };
     TransactionComponent = __decorate([
         core_1.Component({

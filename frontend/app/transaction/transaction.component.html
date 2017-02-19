@@ -3,5 +3,5 @@
 
 <h1>My transactions</h1>
 <div *ngFor="let transaction of transactions">
-  {{transaction.name}} | {{transaction.amount}} | {{transaction.kind}} | {{transaction.committed}}
+  {{transaction.name}} | ${{transaction.amount}} | {{transaction.kind}}
 </div>

@@ -30,7 +30,7 @@ var TransactionService = (function () {
             }
         }), { headers: this.headers })
             .toPromise()
-            .then(function (res) { return res.json().dat; })
+            .then(function (res) { return res.json().data; })
             .catch(this.handleError);
     };
     TransactionService.prototype.getTransactions = function (month) {
@@ -38,7 +38,7 @@ var TransactionService = (function () {
         transactionUrlParams += "?session_token=" + this.sessionToken + "&month=" + month;
         return this.http.get(transactionUrlParams)
             .toPromise()
-            .then(function (response) { return console.log(response); })
+            .then(function (response) { return response.json(); })
             .catch(this.handleError);
     };
     TransactionService.prototype.handleError = function (error) {

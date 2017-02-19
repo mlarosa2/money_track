@@ -25,7 +25,7 @@ export class TransactionService {
         }
       }), {headers: this.headers})
       .toPromise()
-      .then( res => res.json().dat)
+      .then( res => res.json().data)
       .catch(this.handleError);
   }
 
@@ -34,7 +34,7 @@ export class TransactionService {
     transactionUrlParams += `?session_token=${this.sessionToken}&month=${month}`;
     return this.http.get(transactionUrlParams)
       .toPromise()
-      .then(response => console.log(response))
+      .then(response => return response.json() as Transaction[])
       .catch(this.handleError)
   }
   private handleError(error: any): Promise<any> {
