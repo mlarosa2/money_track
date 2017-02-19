@@ -1,10 +1,10 @@
 <form>
-        <select (ngModel)="kind" required>
+        <select #kind required>
             <option disabled>--What kind of purchase is this?--</option>
             <option value="necessity">Necessity (food, clothes, etc...)</option>
             <option value="luxury">Luxury (games, movie ticket, etc...)</option>
         </select>
-        <input placeholder="How much did you spend?" (ngModel)="amount" required>
-        <input placeholder="What did you buy?" (ngModel)="name" required>
-        <a class="btn" onclick="javascript:void(0);" (ngClick)="NewTransactionComponent.create(kind, amount, name);">Save Transaction</a>
+        <input placeholder="How much did you spend?" #amount required>
+        <input placeholder="What did you buy?" #name required>
+        <button (click)="create(kind.value, amount.value, name.value);">Save Transaction</button>
 </form>

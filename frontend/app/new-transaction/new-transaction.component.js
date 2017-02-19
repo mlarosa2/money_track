@@ -16,9 +16,9 @@ var NewTransactionComponent = (function () {
         this.transactionService = transactionService;
         this.router = router;
     }
-    NewTransactionComponent.prototype.create = function (type, amount, name) {
+    NewTransactionComponent.prototype.create = function (kind, amount, name) {
         name = name.trim();
-        this.transactionService.create(type, amount, name);
+        this.transactionService.create(kind, amount, name);
     };
     NewTransactionComponent = __decorate([
         core_1.Component({

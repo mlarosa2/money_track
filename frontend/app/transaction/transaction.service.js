@@ -18,7 +18,7 @@ var TransactionService = (function () {
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.sessionToken = JSON.parse(window.localStorage.getItem('currentUser')).session_token;
     }
-    TransactionService.prototype.create = function (kind, committed, amount, name) {
+    TransactionService.prototype.create = function (kind, amount, name) {
         return this.http
             .post(this.transactionUrl, JSON.stringify({
             "transaction": {
