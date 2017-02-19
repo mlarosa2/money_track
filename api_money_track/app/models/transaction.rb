@@ -7,11 +7,9 @@ class Transaction < ApplicationRecord
   )
 
   def self.get_by_month(user_id, month)
-    transactions = Transaction.find_by(user_id: user_id)
+    transactions = Transaction.where({user_id: user_id, month: month})
     unless transactions.nil? 
-     return  transactions.select do |transaction|
-        transaction.month == month
-      end
+        transactions
     else 
       return []
     end
