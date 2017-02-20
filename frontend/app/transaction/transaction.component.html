@@ -1,13 +1,13 @@
 <h2>Add a new transaction</h2>
 <form>
-        <select #kind required>
-            <option disabled>--What kind of purchase is this?--</option>
-            <option value="necessity">Necessity (food, clothes, etc...)</option>
-            <option value="luxury">Luxury (games, movie ticket, etc...)</option>
-        </select>
-        <input placeholder="How much did you spend?" #amount required>
-        <input placeholder="What did you buy?" #name required>
-        <button (click)="create(kind.value, amount.value, name.value);">Save Transaction</button>
+  <select #kind required>
+    <option disabled>--What kind of purchase is this?--</option>
+    <option value="necessity">Necessity (food, clothes, etc...)</option>
+    <option value="luxury">Luxury (games, movie ticket, etc...)</option>
+  </select>
+  <input placeholder="How much did you spend?" #amount required>
+  <input placeholder="What did you buy?" #name required>
+  <button (click)="create(kind.value, amount.value, name.value);">Save Transaction</button>
 </form>
 <h1>My transactions</h1>
 <div *ngFor="let transaction of transactions | async">
