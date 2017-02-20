@@ -49,6 +49,19 @@ var TransactionService = (function () {
             _this._transactions.next(Object.assign({}, _this.dataStore).transactions);
         }, function (error) { return _this.handleError(error); });
     };
+    TransactionService.prototype.delete = function (id) {
+        var _this = this;
+        var transactionUrl = this.transactionUrl;
+        transactionUrl += "/" + id;
+        this.http
+            .delete(transactionUrl, { search: "session_token=" + this.sessionToken })
+            .subscribe(function (response) {
+            _this.dataStore.transactions.forEach(function (t, i) {
+                if (t.id === id)
+                    _this.dataStore.transactions.splice(i, 1);
+            });
+        }, function (error) { return _this.handleError(error); });
+    };
     TransactionService.prototype.handleError = function (error) {
         console.error('Error!', error);
         return Promise.reject(error.message || error);

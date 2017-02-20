@@ -24,4 +24,8 @@ export class TransactionComponent implements OnInit {
     name = name.trim();
     this.transactionService.create(kind, amount, name);
   }
+
+  delete(id: number): void {
+    this.transactionService.delete(id);
+  }
 }

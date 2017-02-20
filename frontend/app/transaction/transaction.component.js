@@ -24,6 +24,9 @@ var TransactionComponent = (function () {
         name = name.trim();
         this.transactionService.create(kind, amount, name);
     };
+    TransactionComponent.prototype.delete = function (id) {
+        this.transactionService.delete(id);
+    };
     TransactionComponent = __decorate([
         core_1.Component({
             selector: 'transactions',

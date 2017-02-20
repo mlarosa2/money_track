@@ -11,5 +11,5 @@
 </form>
 <h1>My transactions</h1>
 <div *ngFor="let transaction of transactions | async">
-  {{transaction.name}} | ${{transaction.amount}} | {{transaction.kind}}
+  {{transaction.name}} | ${{transaction.amount}} | {{transaction.kind}} <i class="fa fa-times" (click)="delete(transaction.id)"></i>
 </div>

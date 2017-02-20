@@ -11,7 +11,6 @@ import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { TransactionComponent } from './transaction/transaction.component';
-import { NewTransactionComponent } from './new-transaction/new-transaction.component';
 import { HomeComponent } from './home/home.component';
 
 import { routing } from './app.routing';
@@ -28,7 +27,6 @@ import { routing } from './app.routing';
     SignupComponent,
     LoginComponent,
     TransactionComponent,
-    NewTransactionComponent,
     HomeComponent
   ],
   providers: [

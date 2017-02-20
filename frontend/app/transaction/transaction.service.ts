@@ -33,7 +33,7 @@ export class TransactionService {
         }, error => this.handleError(error));
   }
 
-  create(kind: string, amount: number, name: string) {
+  create(kind: string, amount: number, name: string): void {
     this.http
       .post(this.transactionUrl, JSON.stringify({
         "transaction": {
@@ -47,6 +47,18 @@ export class TransactionService {
       .map(response => response.json()).subscribe(data => {
         this.dataStore.transactions.push(data);
         this._transactions.next(Object.assign({}, this.dataStore).transactions);
+      }, error => this.handleError(error));
+  }
+
+  delete(id: number) {
+    let transactionUrl: string = this.transactionUrl;
+    transactionUrl += `/${id}`;
+    this.http
+      .delete(transactionUrl, {search: `session_token=${this.sessionToken}`})
+        .subscribe(response => {
+          this.dataStore.transactions.forEach((t, i) => {
+            if (t.id === id) this.dataStore.transactions.splice(i, 1);
+        });
       }, error => this.handleError(error));
   }
 
