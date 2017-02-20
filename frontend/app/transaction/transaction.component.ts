@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { TransactionService } from '../transaction/transaction.service';
-import { Transaction } from '../transaction/transaction'
+import { Transaction } from '../transaction/transaction';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'transactions',
@@ -10,18 +10,18 @@ import { Transaction } from '../transaction/transaction'
 })
 
 export class TransactionComponent implements OnInit {
-  transactions: Transaction[] = [];
-
-  constructor(private transactionService: TransactionService,
-              private router: Router) {}
+  private transactions: Observable<Transaction[]>;
+  constructor(private transactionService: TransactionService) {}
 
   ngOnInit(): void {
+    this.transactions = this.transactionService.transactions;
     let current = new Date();
     let month: string = (current.getMonth()).toString();
-    this.transactionService.getTransactions(month).then(trans => {
-      for (let t in trans) {
-        if (t) this.transactions.push(trans[t]);
-      }
-    });
+    this.transactionService.retrieveTransactions(month);
+  }
+
+  create(kind: string, amount: number, name: string): void {
+    name = name.trim();
+    this.transactionService.create(kind, amount, name);
   }
 }

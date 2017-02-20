@@ -9,24 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
 var transaction_service_1 = require('../transaction/transaction.service');
 var TransactionComponent = (function () {
-    function TransactionComponent(transactionService, router) {
+    function TransactionComponent(transactionService) {
         this.transactionService = transactionService;
-        this.router = router;
-        this.transactions = [];
     }
     TransactionComponent.prototype.ngOnInit = function () {
-        var _this = this;
+        this.transactions = this.transactionService.transactions;
         var current = new Date();
         var month = (current.getMonth()).toString();
-        this.transactionService.getTransactions(month).then(function (trans) {
-            for (var t in trans) {
-                if (t)
-                    _this.transactions.push(trans[t]);
-            }
-        });
+        this.transactionService.retrieveTransactions(month);
+    };
+    TransactionComponent.prototype.create = function (kind, amount, name) {
+        name = name.trim();
+        this.transactionService.create(kind, amount, name);
     };
     TransactionComponent = __decorate([
         core_1.Component({
@@ -34,7 +30,7 @@ var TransactionComponent = (function () {
             templateUrl: 'app/transaction/transaction.component.html',
             providers: [transaction_service_1.TransactionService]
         }), 
-        __metadata('design:paramtypes', [transaction_service_1.TransactionService, router_1.Router])
+        __metadata('design:paramtypes', [transaction_service_1.TransactionService])
     ], TransactionComponent);
     return TransactionComponent;
 }());

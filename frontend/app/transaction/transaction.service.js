@@ -10,16 +10,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-require('rxjs/add/operator/toPromise');
+var BehaviorSubject_1 = require('rxjs/BehaviorSubject');
+require('rxjs/add/operator/map');
 var TransactionService = (function () {
     function TransactionService(http) {
         this.http = http;
         this.transactionUrl = 'http://localhost:3000/api/transactions';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.sessionToken = JSON.parse(window.localStorage.getItem('currentUser')).session_token;
+        this.dataStore = { transactions: [] };
+        this._transactions = new BehaviorSubject_1.BehaviorSubject([]);
+        this.transactions = this._transactions.asObservable();
     }
+    TransactionService.prototype.retrieveTransactions = function (month) {
+        var _this = this;
+        var transactionUrlParams = this.transactionUrl;
+        transactionUrlParams += "?session_token=" + this.sessionToken + "&month=" + month;
+        this.http.get(transactionUrlParams).map(function (response) { return response.json(); })
+            .subscribe(function (data) {
+            _this.dataStore.transactions = data;
+            _this._transactions.next(Object.assign({}, _this.dataStore).transactions);
+        }, function (error) { return _this.handleError(error); });
+    };
     TransactionService.prototype.create = function (kind, amount, name) {
-        return this.http
+        var _this = this;
+        this.http
             .post(this.transactionUrl, JSON.stringify({
             "transaction": {
                 "kind": kind,
@@ -29,17 +44,10 @@ var TransactionService = (function () {
                 "month": new Date().getMonth()
             }
         }), { headers: this.headers })
-            .toPromise()
-            .then(function (res) { return res.json().data; })
-            .catch(this.handleError);
-    };
-    TransactionService.prototype.getTransactions = function (month) {
-        var transactionUrlParams = this.transactionUrl;
-        transactionUrlParams += "?session_token=" + this.sessionToken + "&month=" + month;
-        return this.http.get(transactionUrlParams)
-            .toPromise()
-            .then(function (response) { return response.json(); })
-            .catch(this.handleError);
+            .map(function (response) { return response.json(); }).subscribe(function (data) {
+            _this.dataStore.transactions.push(data);
+            _this._transactions.next(Object.assign({}, _this.dataStore).transactions);
+        }, function (error) { return _this.handleError(error); });
     };
     TransactionService.prototype.handleError = function (error) {
         console.error('Error!', error);
