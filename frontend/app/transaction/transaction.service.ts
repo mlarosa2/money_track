@@ -50,7 +50,7 @@ export class TransactionService {
       }, error => this.handleError(error));
   }
 
-  delete(id: number) {
+  delete(id: number): void {
     let transactionUrl: string = this.transactionUrl;
     transactionUrl += `/${id}`;
     this.http
@@ -60,6 +60,26 @@ export class TransactionService {
             if (t.id === id) this.dataStore.transactions.splice(i, 1);
         });
       }, error => this.handleError(error));
+  }
+
+  update(kind: string, amount: number, name: string, id: number, month: number):void {
+    let transactionUrl: string = this.transactionUrl;
+    transactionUrl += `/${id}`;
+    this.http
+      .patch(transactionUrl, JSON.stringify({
+        "transaction": {
+          "kind": kind, 
+          "amount": amount, 
+          "name": name, 
+          "session_token": this.sessionToken,
+          "month": month
+        }
+      }), {headers: this.headers})
+        .map(response => response.json()).subscribe(data => {
+          this.dataStore.transactions.forEach((t, i) => {
+            if (t.id === data.id) this.dataStore.transactions[i] = data;
+          });
+        });
   }
 
   private handleError(error: any): Promise<any> {

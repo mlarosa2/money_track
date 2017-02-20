@@ -11,9 +11,11 @@ import { Observable } from 'rxjs/Observable';
 
 export class TransactionComponent implements OnInit {
   private transactions: Observable<Transaction[]>;
+  private transactionClicked;
   constructor(private transactionService: TransactionService) {}
 
   ngOnInit(): void {
+    this.transactionClicked = null;
     this.transactions = this.transactionService.transactions;
     let current = new Date();
     let month: string = (current.getMonth()).toString();
@@ -27,5 +29,15 @@ export class TransactionComponent implements OnInit {
 
   delete(id: number): void {
     this.transactionService.delete(id);
+  }
+
+  update(kind: string, amount: number, name: string, id: number, month :number): void {
+    name = name.trim();
+    this.transactionService.update(kind, amount, name, id, month);
+    this.clickTransaction(id);
+  }
+
+  clickTransaction(trans) {
+    this.transactionClicked = this.transactionClicked === trans ? null : trans;
   }
 }

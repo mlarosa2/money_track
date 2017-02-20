@@ -62,6 +62,27 @@ var TransactionService = (function () {
             });
         }, function (error) { return _this.handleError(error); });
     };
+    TransactionService.prototype.update = function (kind, amount, name, id, month) {
+        var _this = this;
+        var transactionUrl = this.transactionUrl;
+        transactionUrl += "/" + id;
+        this.http
+            .patch(transactionUrl, JSON.stringify({
+            "transaction": {
+                "kind": kind,
+                "amount": amount,
+                "name": name,
+                "session_token": this.sessionToken,
+                "month": month
+            }
+        }), { headers: this.headers })
+            .map(function (response) { return response.json(); }).subscribe(function (data) {
+            _this.dataStore.transactions.forEach(function (t, i) {
+                if (t.id === data.id)
+                    _this.dataStore.transactions[i] = data;
+            });
+        });
+    };
     TransactionService.prototype.handleError = function (error) {
         console.error('Error!', error);
         return Promise.reject(error.message || error);

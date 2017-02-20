@@ -11,5 +11,21 @@
 </form>
 <h1>My transactions</h1>
 <div *ngFor="let transaction of transactions | async">
-  {{transaction.name}} | ${{transaction.amount}} | {{transaction.kind}} <i class="fa fa-times" (click)="delete(transaction.id)"></i>
+  <div>
+    {{transaction.name}} | ${{transaction.amount}} | {{transaction.kind}} 
+    <i class="fa fa-times" (click)="delete(transaction.id)"></i>
+    <i class="fa fa-pencil" (click)="clickTransaction(transaction.id)"></i>
+ </div>
+  <div *ngIf="transactionClicked === transaction.id">
+    <form>
+  <select #editKind required value="{{transaction.kind}}">
+    <option disabled>--What kind of purchase is this?--</option>
+    <option value="necessity">Necessity (food, clothes, etc...)</option>
+    <option value="luxury">Luxury (games, movie ticket, etc...)</option>
+  </select>
+  <input placeholder="How much did you spend?" #editAmount value="{{transaction.amount}}" required>
+  <input placeholder="What did you buy?" #editName value="{{transaction.name}}" required>
+  <button (click)="update(editKind.value, editAmount.value, editName.value, transaction.id, transaction.month);">Save Transaction</button>
+</form>
+  </div>
 </div>

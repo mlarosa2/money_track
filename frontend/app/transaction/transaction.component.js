@@ -15,6 +15,7 @@ var TransactionComponent = (function () {
         this.transactionService = transactionService;
     }
     TransactionComponent.prototype.ngOnInit = function () {
+        this.transactionClicked = null;
         this.transactions = this.transactionService.transactions;
         var current = new Date();
         var month = (current.getMonth()).toString();
@@ -26,6 +27,14 @@ var TransactionComponent = (function () {
     };
     TransactionComponent.prototype.delete = function (id) {
         this.transactionService.delete(id);
+    };
+    TransactionComponent.prototype.update = function (kind, amount, name, id, month) {
+        name = name.trim();
+        this.transactionService.update(kind, amount, name, id, month);
+        this.clickTransaction(id);
+    };
+    TransactionComponent.prototype.clickTransaction = function (trans) {
+        this.transactionClicked = this.transactionClicked === trans ? null : trans;
     };
     TransactionComponent = __decorate([
         core_1.Component({
