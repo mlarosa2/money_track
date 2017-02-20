@@ -12,6 +12,6 @@ these instructions:
 2. cd into the Repo, then into /api_money_track.
 3. Run bundle install
 4. After the gems are bundled, run bundle exec rails s to start the backend server.
-5. In another terminal, cd into /frontend
+5. In another terminal, cd into /frontend and run npm install
 6. Run npm start. This will start a server on localhost:8000 and automatically
    open the app for you in your default browser.
