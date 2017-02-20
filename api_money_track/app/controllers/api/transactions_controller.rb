@@ -19,7 +19,7 @@ class Api::TransactionsController < ApplicationController
 
   def update
     user_id = User.find_by(session_token: params[:transaction][:session_token]).id
-    @transaction = Transaction.find(params[:transaction][:id])
+    @transaction = Transaction.find(params[:id])
 
     if @transaction.update({:name => params[:transaction][:name], :kind => params[:transaction][:kind], :amount => params[:transaction][:amount], :user_id => user_id, :month => params[:transaction][:month]})  
       render @transaction
