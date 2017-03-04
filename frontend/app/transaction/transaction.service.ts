@@ -23,9 +23,9 @@ export class TransactionService {
     this.transactions = this._transactions.asObservable();
   }
 
-  retrieveTransactions(month: string): void {
+  retrieveTransactions(currentDate: string): void {
     let transactionUrlParams: string = this.transactionUrl;
-    transactionUrlParams += `?session_token=${this.sessionToken}&month=${month}`;
+    transactionUrlParams += `?session_token=${this.sessionToken}&date_purchased=${currentDate}`;
     this.http.get(transactionUrlParams).map(response =>  response.json())
         .subscribe( data => {
           this.dataStore.transactions = data;
@@ -33,7 +33,7 @@ export class TransactionService {
         }, error => this.handleError(error));
   }
 
-  create(kind: string, amount: number, name: string): void {
+  create(kind: string, amount: number, name: string, datePurchased: string): void {
     this.http
       .post(this.transactionUrl, JSON.stringify({
         "transaction": {
@@ -41,7 +41,7 @@ export class TransactionService {
           "amount": amount, 
           "name": name, 
           "session_token": this.sessionToken,
-          "month": new Date().getMonth()
+          "date_purchased": datePurchased
         }
       }), {headers: this.headers})
       .map(response => response.json()).subscribe(data => {
@@ -60,9 +60,9 @@ export class TransactionService {
             if (t.id === id) this.dataStore.transactions.splice(i, 1);
         });
       }, error => this.handleError(error));
-  }
+  }number
 
-  update(kind: string, amount: number, name: string, id: number, month: number):void {
+  update(kind: string, amount: number, name: string, id: number, datePurchased: string):void {
     let transactionUrl: string = this.transactionUrl;
     transactionUrl += `/${id}`;
     this.http
@@ -72,7 +72,7 @@ export class TransactionService {
           "amount": amount, 
           "name": name, 
           "session_token": this.sessionToken,
-          "month": month
+          "date_purchased": datePurchased
         }
       }), {headers: this.headers})
         .map(response => response.json()).subscribe(data => {

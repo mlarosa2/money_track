@@ -18,22 +18,25 @@ export class TransactionComponent implements OnInit {
     this.transactionClicked = null;
     this.transactions = this.transactionService.transactions;
     let current = new Date();
-    let month: string = (current.getMonth()).toString();
-    this.transactionService.retrieveTransactions(month);
+    let month: string = String(current.getMonth() + 1);
+    let year: string = String(current.getFullYear());
+    let day: string = String(current.getDay());
+    let currentDate: string = `${year}-${month}-${day}`;
+    this.transactionService.retrieveTransactions(currentDate);
   }
 
-  create(kind: string, amount: number, name: string): void {
+  create(kind: string, amount: number, name: string, datePurchased: string): void {
     name = name.trim();
-    this.transactionService.create(kind, amount, name);
+    this.transactionService.create(kind, amount, name, datePurchased);
   }
 
   delete(id: number): void {
     this.transactionService.delete(id);
   }
 
-  update(kind: string, amount: number, name: string, id: number, month :number): void {
+  update(kind: string, amount: number, name: string, id: number, datePurchased :string): void {
     name = name.trim();
-    this.transactionService.update(kind, amount, name, id, month);
+    this.transactionService.update(kind, amount, name, id, datePurchased);
     this.clickTransaction(id);
   }
 

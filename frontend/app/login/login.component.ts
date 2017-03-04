@@ -14,7 +14,8 @@ export class LoginComponent {
   login(email: string, password: string): void {
     email = email.trim();
     password = password.trim();
-    this.loginService.login(email, password);
-    this.router.navigate(['/my-transactions']);
+    this.loginService.login(email, password).then(() => {
+      this.router.navigate(['/my-transactions']);
+    })
   }
 }

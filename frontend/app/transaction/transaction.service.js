@@ -22,17 +22,17 @@ var TransactionService = (function () {
         this._transactions = new BehaviorSubject_1.BehaviorSubject([]);
         this.transactions = this._transactions.asObservable();
     }
-    TransactionService.prototype.retrieveTransactions = function (month) {
+    TransactionService.prototype.retrieveTransactions = function (currentDate) {
         var _this = this;
         var transactionUrlParams = this.transactionUrl;
-        transactionUrlParams += "?session_token=" + this.sessionToken + "&month=" + month;
+        transactionUrlParams += "?session_token=" + this.sessionToken + "&date_purchased=" + currentDate;
         this.http.get(transactionUrlParams).map(function (response) { return response.json(); })
             .subscribe(function (data) {
             _this.dataStore.transactions = data;
             _this._transactions.next(Object.assign({}, _this.dataStore).transactions);
         }, function (error) { return _this.handleError(error); });
     };
-    TransactionService.prototype.create = function (kind, amount, name) {
+    TransactionService.prototype.create = function (kind, amount, name, datePurchased) {
         var _this = this;
         this.http
             .post(this.transactionUrl, JSON.stringify({
@@ -41,7 +41,7 @@ var TransactionService = (function () {
                 "amount": amount,
                 "name": name,
                 "session_token": this.sessionToken,
-                "month": new Date().getMonth()
+                "date_purchased": datePurchased
             }
         }), { headers: this.headers })
             .map(function (response) { return response.json(); }).subscribe(function (data) {
@@ -62,7 +62,7 @@ var TransactionService = (function () {
             });
         }, function (error) { return _this.handleError(error); });
     };
-    TransactionService.prototype.update = function (kind, amount, name, id, month) {
+    TransactionService.prototype.update = function (kind, amount, name, id, datePurchased) {
         var _this = this;
         var transactionUrl = this.transactionUrl;
         transactionUrl += "/" + id;
@@ -73,7 +73,7 @@ var TransactionService = (function () {
                 "amount": amount,
                 "name": name,
                 "session_token": this.sessionToken,
-                "month": month
+                "date_purchased": datePurchased
             }
         }), { headers: this.headers })
             .map(function (response) { return response.json(); }).subscribe(function (data) {

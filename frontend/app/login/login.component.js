@@ -17,10 +17,12 @@ var LoginComponent = (function () {
         this.router = router;
     }
     LoginComponent.prototype.login = function (email, password) {
+        var _this = this;
         email = email.trim();
         password = password.trim();
-        this.loginService.login(email, password);
-        this.router.navigate(['/my-transactions']);
+        this.loginService.login(email, password).then(function () {
+            _this.router.navigate(['/my-transactions']);
+        });
     };
     LoginComponent = __decorate([
         core_1.Component({

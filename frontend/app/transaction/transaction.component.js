@@ -18,19 +18,22 @@ var TransactionComponent = (function () {
         this.transactionClicked = null;
         this.transactions = this.transactionService.transactions;
         var current = new Date();
-        var month = (current.getMonth()).toString();
-        this.transactionService.retrieveTransactions(month);
+        var month = String(current.getMonth() + 1);
+        var year = String(current.getFullYear());
+        var day = String(current.getDay());
+        var currentDate = year + "-" + month + "-" + day;
+        this.transactionService.retrieveTransactions(currentDate);
     };
-    TransactionComponent.prototype.create = function (kind, amount, name) {
+    TransactionComponent.prototype.create = function (kind, amount, name, datePurchased) {
         name = name.trim();
-        this.transactionService.create(kind, amount, name);
+        this.transactionService.create(kind, amount, name, datePurchased);
     };
     TransactionComponent.prototype.delete = function (id) {
         this.transactionService.delete(id);
     };
-    TransactionComponent.prototype.update = function (kind, amount, name, id, month) {
+    TransactionComponent.prototype.update = function (kind, amount, name, id, datePurchased) {
         name = name.trim();
-        this.transactionService.update(kind, amount, name, id, month);
+        this.transactionService.update(kind, amount, name, id, datePurchased);
         this.clickTransaction(id);
     };
     TransactionComponent.prototype.clickTransaction = function (trans) {

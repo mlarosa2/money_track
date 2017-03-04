@@ -7,7 +7,8 @@
   </select>
   <input placeholder="How much did you spend?" #amount required>
   <input placeholder="What did you buy?" #name required>
-  <button (click)="create(kind.value, amount.value, name.value);">Save Transaction</button>
+  <input type="date" #datePurchased required>
+  <button (click)="create(kind.value, amount.value, name.value, datePurchased.value);">Save Transaction</button>
 </form>
 <h1>My transactions</h1>
 <div *ngFor="let transaction of transactions | async">
@@ -25,7 +26,8 @@
   </select>
   <input placeholder="How much did you spend?" #editAmount value="{{transaction.amount}}" required>
   <input placeholder="What did you buy?" #editName value="{{transaction.name}}" required>
-  <button (click)="update(editKind.value, editAmount.value, editName.value, transaction.id, transaction.month);">Save Transaction</button>
+  <input type="date" #editDatePurchased>
+  <button (click)="update(editKind.value, editAmount.value, editName.value, transaction.id, editDatePurchased.value);">Save Transaction</button>
 </form>
   </div>
 </div>
