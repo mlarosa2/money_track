@@ -9,7 +9,7 @@ class Transaction < ApplicationRecord
   def self.get_by_month_and_year(user_id, date_purchased)
     year = date_purchased.split("-")[0].to_i
     month = date_purchased.split("-")[1].to_i
-    transactions = User.find(User);
+    transactions = User.find(user_id).transactions;
     unless transactions.nil? 
         transactions.select do |transaction|
           transaction_year = transaction.date_purchased.split("-")[0].to_i
