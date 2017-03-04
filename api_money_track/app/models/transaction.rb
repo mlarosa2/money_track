@@ -6,12 +6,19 @@ class Transaction < ApplicationRecord
     primary_key: :id
   )
 
-  def self.get_by_month(user_id, month)
-    transactions = Transaction.where({user_id: user_id, month: month})
+  def self.get_by_month_and_year(user_id, date_purchased)
+    year = date_purchased.split("-")[0].to_i
+    month = date_purchased.split("-")[1].to_i
+    transactions = User.where({user_id: user_id}).transactions
     unless transactions.nil? 
-        transactions
+        transactions.select do |transaction|
+          transaction_year = transaction.date_purchased.split("-")[0].to_i
+          transaction_month = transaction.date_purchased.split("-")[1].to_i
+
+          year == transaction_year && month == transaction_month
+        end
     else 
-      return []
+      []
     end
   end
 end
