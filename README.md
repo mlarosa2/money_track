@@ -1,4 +1,4 @@
-# Money Track
+# Kid Kommerce
 
 A budgeting app to teach your children the value of a dollar! 
 Powered by Rails 5 and Angular 2.
