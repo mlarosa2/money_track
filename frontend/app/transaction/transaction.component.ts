@@ -12,6 +12,7 @@ import { Observable } from 'rxjs/Observable';
 export class TransactionComponent implements OnInit {
   private transactions: Observable<Transaction[]>;
   private transactionClicked;
+  private active = true;
   constructor(private transactionService: TransactionService) {}
 
   ngOnInit(): void {
@@ -40,7 +41,13 @@ export class TransactionComponent implements OnInit {
     this.clickTransaction(id);
   }
 
-  clickTransaction(trans) {
+  clickTransaction(trans): void {
     this.transactionClicked = this.transactionClicked === trans ? null : trans;
+  }
+
+  resetForm(form): void {
+    form.reset();
+    this.active = false;
+    setTimeout(() => this.active = true, 0);
   }
 }

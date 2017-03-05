@@ -1,14 +1,14 @@
 <h2>Add a new transaction</h2>
-<form>
-  <select #kind required>
-    <option disabled>--What kind of purchase is this?--</option>
+<form #transactionForm="ngForm" *ngIf="active">
+  <select ngModel required #kind="ngModel" name="kind">
+    <option value="">--What kind of purchase is this?--</option>
     <option value="necessity">Necessity (food, clothes, etc...)</option>
     <option value="luxury">Luxury (games, movie ticket, etc...)</option>
   </select>
-  <input placeholder="How much did you spend?" #amount required>
-  <input placeholder="What did you buy?" #name required>
-  <input type="date" #datePurchased required>
-  <button (click)="create(kind.value, amount.value, name.value, datePurchased.value);">Save Transaction</button>
+  <input placeholder="How much did you spend?" required ngModel name="amount" #amount="ngModel">
+  <input placeholder="What did you buy?" ngModel required name="name" #name="ngModel">
+  <input type="date" ngModel required name="datePurchased" #datePurchased="ngModel"> 
+  <button (click)="create(kind.value, amount.value, name.value, datePurchased.value); resetForm(transactionForm)">Save Transaction</button>
 </form>
 <h1>My transactions</h1>
 <div *ngFor="let transaction of transactions | async">
@@ -16,18 +16,18 @@
     {{transaction.name}} | ${{transaction.amount}} | {{transaction.kind}} 
     <i class="fa fa-times" (click)="delete(transaction.id)"></i>
     <i class="fa fa-pencil" (click)="clickTransaction(transaction.id)"></i>
- </div>
+  </div>
   <div *ngIf="transactionClicked === transaction.id">
     <form>
-  <select #editKind required value="{{transaction.kind}}">
-    <option disabled>--What kind of purchase is this?--</option>
-    <option value="necessity">Necessity (food, clothes, etc...)</option>
-    <option value="luxury">Luxury (games, movie ticket, etc...)</option>
-  </select>
-  <input placeholder="How much did you spend?" #editAmount value="{{transaction.amount}}" required>
-  <input placeholder="What did you buy?" #editName value="{{transaction.name}}" required>
-  <input type="date" #editDatePurchased>
-  <button (click)="update(editKind.value, editAmount.value, editName.value, transaction.id, editDatePurchased.value);">Save Transaction</button>
-</form>
+      <select #editKind required value="{{transaction.kind}}">
+        <option value="">--What kind of purchase is this?--</option>
+        <option value="necessity">Necessity (food, clothes, etc...)</option>
+        <option value="luxury">Luxury (games, movie ticket, etc...)</option>
+      </select>
+      <input placeholder="How much did you spend?" #editAmount value="{{transaction.amount}}" required>
+      <input placeholder="What did you buy?" #editName value="{{transaction.name}}" required>
+      <input type="date" #editDatePurchased>
+      <button (click)="update(editKind.value, editAmount.value, editName.value, transaction.id, editDatePurchased.value);">Save Transaction</button>
+    </form>
   </div>
 </div>

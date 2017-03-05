@@ -13,6 +13,7 @@ var transaction_service_1 = require('../transaction/transaction.service');
 var TransactionComponent = (function () {
     function TransactionComponent(transactionService) {
         this.transactionService = transactionService;
+        this.active = true;
     }
     TransactionComponent.prototype.ngOnInit = function () {
         this.transactionClicked = null;
@@ -38,6 +39,12 @@ var TransactionComponent = (function () {
     };
     TransactionComponent.prototype.clickTransaction = function (trans) {
         this.transactionClicked = this.transactionClicked === trans ? null : trans;
+    };
+    TransactionComponent.prototype.resetForm = function (form) {
+        var _this = this;
+        form.reset();
+        this.active = false;
+        setTimeout(function () { return _this.active = true; }, 0);
     };
     TransactionComponent = __decorate([
         core_1.Component({
