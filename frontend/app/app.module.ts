@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { TransactionComponent } from './transaction/transaction.component';
 import { HomeComponent } from './home/home.component';
+import { BarChartComponent } from './bar-chart/bar-chart.component'; 
 
 import { routing } from './app.routing';
 
@@ -27,7 +28,8 @@ import { routing } from './app.routing';
     SignupComponent,
     LoginComponent,
     TransactionComponent,
-    HomeComponent
+    HomeComponent,
+    BarChartComponent
   ],
   providers: [
     //services here

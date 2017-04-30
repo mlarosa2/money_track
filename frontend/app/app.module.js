@@ -18,6 +18,7 @@ var signup_component_1 = require("./signup/signup.component");
 var login_component_1 = require("./login/login.component");
 var transaction_component_1 = require("./transaction/transaction.component");
 var home_component_1 = require("./home/home.component");
+var bar_chart_component_1 = require("./bar-chart/bar-chart.component");
 var app_routing_1 = require("./app.routing");
 var AppModule = (function () {
     function AppModule() {
@@ -37,7 +38,8 @@ AppModule = __decorate([
             signup_component_1.SignupComponent,
             login_component_1.LoginComponent,
             transaction_component_1.TransactionComponent,
-            home_component_1.HomeComponent
+            home_component_1.HomeComponent,
+            bar_chart_component_1.BarChartComponent
         ],
         providers: [],
         bootstrap: [app_component_1.AppComponent]
