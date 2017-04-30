@@ -96,7 +96,14 @@ export class BarChartComponent implements OnChanges, AfterViewInit {
         this.config.forEach((bar: any) => {
             this.xScale.domain(D3.extent(bar.dataset, (d: any) => d.x));
             this.yScale.domain([0, this.getMaxY]);
-
+            this.svg.selectAll('bar')
+                .data(bar)
+                .enter().append('rect')
+                .style('fill', 'steelblue')
+                .attr('x', d => { d.date })
+                .attr('width', this.xScale.rangeBand())
+                .attr('y', d => { d.value })
+                .attr('height', d => { this.height - this.yScale(d.value) });
         });
     }
 }
