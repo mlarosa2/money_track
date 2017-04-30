@@ -7,12 +7,12 @@ import {
     ViewChild
 } from '@angular/core';
 import { BarChartConfig } from './bar-chart-config';
-import * as D3 from 'd3';
-import * as Moment from 'moment';
+import * as D3 from '../../node_modules/d3/d3.min.js';
+import * as Moment from '../../node_modules/moment/moment.js';
 
 @Component({
     selector: 'bar-chart',
-    templateUrl: './bar-chart.component.html'
+    templateUrl: 'app/bar-chart/bar-chart.component.html'
 })
 export class BarChartComponent implements OnChanges, AfterViewInit {
 

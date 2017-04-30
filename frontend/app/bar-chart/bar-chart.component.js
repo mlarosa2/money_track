@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var D3 = require("d3");
-var Moment = require("moment");
+var D3 = require("../../node_modules/d3/d3.min.js");
+var Moment = require("../../node_modules/moment/moment.js");
 var BarChartComponent = (function () {
     function BarChartComponent() {
     }
@@ -97,7 +97,7 @@ __decorate([
 BarChartComponent = __decorate([
     core_1.Component({
         selector: 'bar-chart',
-        templateUrl: './bar-chart.component.html'
+        templateUrl: 'app/bar-chart/bar-chart.component.html'
     }),
     __metadata("design:paramtypes", [])
 ], BarChartComponent);
